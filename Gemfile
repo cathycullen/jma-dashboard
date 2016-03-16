@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass'
+gem 'simple_form'
 
 # twitter bootstrap css & javascript toolkit
 gem 'twitter-bootswatch-rails', '~> 3.3.4'

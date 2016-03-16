@@ -1,16 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Coaches</h1>
+<p id="notice"><%= notice %></p>
 
-<table>
+  <h3>Coaches</h3>
+  <%= form_tag coaches_path, :method => "get" do %>
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <p>
+    <%= text_field_tag "search", params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <% end %>
+
+
+<table class="table table-striped table-bordered table-striped table-hover">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th colspan="3"></th>
+      <th><%= sortable "Name" %></th>
+      <th><%= sortable "Email" %></th>
+      <th><%= sortable "Phone" %></th>
+      <th><%= sortable "coach" %></th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
+
 
   <tbody>
     <% @coaches.each do |coach| %>

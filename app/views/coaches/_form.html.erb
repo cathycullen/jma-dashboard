@@ -2,7 +2,6 @@
   <% if @coach.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@coach.errors.count, "error") %> prohibited this coach from being saved:</h2>
-
       <ul>
       <% @coach.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,19 +10,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="well bs-component">
+      <fieldset >
+        <%= simple_form_for @coach do |f| %>
+        <%= f.input :name %>
+        <%= f.input :email %>
+        <%= f.input :phone %>
+        <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      <% end %>
+    </fieldset>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>
+
+

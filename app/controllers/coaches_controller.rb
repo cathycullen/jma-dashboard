@@ -1,5 +1,6 @@
 class CoachesController < ApplicationController
   before_action :set_coach, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /coaches
   # GET /coaches.json
@@ -71,4 +72,19 @@ class CoachesController < ApplicationController
     def coach_params
       params.require(:coach).permit(:name, :email, :phone)
     end
+
+
+    def sort_column
+      Coach.column_names.include?(params[:sort])? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc, desc].include?(params[:direction])? params[:direction] : "asc"
+    end
+
+    def sort_terms
+      sort_column + " " + sort_direction
+    end
+
+
 end
