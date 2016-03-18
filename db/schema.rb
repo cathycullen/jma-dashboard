@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312182217) do
+ActiveRecord::Schema.define(version: 20160318144504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,4 +24,23 @@ ActiveRecord::Schema.define(version: 20160312182217) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hab_codes", force: :cascade do |t|
+    t.string   "code"
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "email"
+    t.datetime "date_sent"
+    t.boolean  "registered",  default: false
+    t.boolean  "assigned",    default: false
+    t.datetime "completed"
+    t.boolean  "debriefed",   default: false
+    t.boolean  "report_sent", default: false
+    t.integer  "coach_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "hab_codes", ["coach_id"], name: "index_hab_codes_on_coach_id", using: :btree
+
+  add_foreign_key "hab_codes", "coaches"
 end

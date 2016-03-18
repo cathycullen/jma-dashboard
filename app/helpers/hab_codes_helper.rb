@@ -1,0 +1,2 @@
+module HabCodesHelper
+end

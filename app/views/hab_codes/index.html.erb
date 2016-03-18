@@ -1,0 +1,137 @@
+<p id="notice"><%= notice %></p>
+
+  <h3>Assigned Hab Codes</h3>
+  <%= form_tag hab_codes_path, :method => "get" do %>
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <p>
+    <%= text_field_tag "search", params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <% end %>
+
+<table class="table table-striped table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th><%= sortable "code" %></th>
+      <th><%= sortable "first_name", "first" %></th>
+      <th><%= sortable "last_name", "last" %></th>
+      <th><%= sortable "email" %></th>
+      <th><%= sortable "date_sent" %></th>
+      <th><%= sortable "registered" %></th>
+      <th><%= sortable "assigned" %></th>
+      <th><%= sortable "completed" %></th>
+      <th><%= sortable "debriefed" %></th>
+      <th><%= sortable "report_sent" %></th>
+      <th><%= sortable "coach" %></th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assigned.each do |hab_code| %>
+      <tr>
+        <td><%= hab_code.code %></td>
+        <td><%= hab_code.first_name %></td>
+        <td><%= hab_code.last_name %></td>
+        <td><%= hab_code.email %></td>
+        <% if !hab_code.date_sent.nil? %>
+          <td><%= hab_code.date_sent.strftime("%m/%d/%Y")  %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td><%= hab_code.registered %></td>
+        <td><%= hab_code.assigned %></td>
+        <% if !hab_code.completed.nil? %>
+          <td><%= hab_code.completed.strftime("%m/%d/%Y")  %></td>
+        <% else %>
+        <td></td>
+        <% end %>
+        <td><%= hab_code.debriefed %></td>
+        <td><%= hab_code.report_sent %></td>
+        <td><%= hab_code.coach_id %></td>
+
+        <%#
+        <td><%= link_to 'Destroy', hab_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# %>
+        <td>
+          <%= link_to '<i class="glyphicon glyphicon-envelope"></i>'.html_safe, hab_code, class: 'btn btn-default  btn-sm' %>
+        </td>
+        <td><%= link_to edit_hab_code_path(hab_code), class: "btn btn-default  btn-sm" do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        </td>
+         <td>
+       <%= link_to edit_hab_code_path(hab_code), class: "btn btn-default  btn-sm" do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @assigned %>
+
+<h3>Unassigned Hab Codes</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= sortable "code" %></th>
+      <th><%= sortable "first_name" %></th>
+      <th><%= sortable "last_name" %></th>
+      <th><%= sortable "email" %></th>
+      <th><%= sortable "date_sent" %></th>
+      <th><%= sortable "registered" %></th>
+      <th><%= sortable "assigned" %></th>
+      <th><%= sortable "completed" %></th>
+      <th><%= sortable "debriefed" %></th>
+      <th><%= sortable "report_sent" %></th>
+      <th><%= sortable "coach" %></th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @unassigned.each do |hab_code| %>
+      <tr>
+        <td><%= hab_code.code %></td>
+        <td><%= hab_code.first_name %></td>
+        <td><%= hab_code.last_name %></td>
+        <td><%= hab_code.email %></td>
+        <% if !hab_code.date_sent.nil? %>
+          <td><%= hab_code.date_sent.strftime("%m/%d/%Y")  %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td><%= hab_code.registered %></td>
+        <td><%= hab_code.assigned %></td>
+        <% if !hab_code.completed.nil? %>
+          <td><%= hab_code.completed.strftime("%m/%d/%Y")  %></td>
+        <% else %>
+        <td></td>
+        <% end %>
+        <td><%= hab_code.debriefed %></td>
+        <td><%= hab_code.report_sent %></td>
+        <td><%= hab_code.coach_id %></td>
+
+        <%#
+        <td><%= link_to 'Destroy', hab_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# %>
+        <td>
+          <%= link_to '<i class="glyphicon glyphicon-envelope"></i>'.html_safe, hab_code, class: 'btn btn-default  btn-sm' %>
+        </td>
+        <td><%= link_to edit_hab_code_path(hab_code), class: "btn btn-default  btn-sm" do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        </td>
+         <td>
+       <%= link_to edit_hab_code_path(hab_code), class: "btn btn-default  btn-sm" do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+
+<br>
+
+<%= link_to 'New Hab code', new_hab_code_path %>

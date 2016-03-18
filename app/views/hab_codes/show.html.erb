@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @hab_code.code %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @hab_code.last_name %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @hab_code.first_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @hab_code.email %>
+</p>
+
+<p>
+  <strong>Date sent:</strong>
+  <%= @hab_code.date_sent %>
+</p>
+
+<p>
+  <strong>Registered:</strong>
+  <%= @hab_code.registered %>
+</p>
+
+<p>
+  <strong>Assigned:</strong>
+  <%= @hab_code.assigned %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @hab_code.completed %>
+</p>
+
+<p>
+  <strong>Debriefed:</strong>
+  <%= @hab_code.debriefed %>
+</p>
+
+<p>
+  <strong>Report sent:</strong>
+  <%= @hab_code.report_sent %>
+</p>
+
+<p>
+  <strong>Coach:</strong>
+  <%= @hab_code.coach %>
+</p>
+
+<%= link_to 'Edit', edit_hab_code_path(@hab_code) %> |
+<%= link_to 'Back', hab_codes_path %>

@@ -1,0 +1,66 @@
+<%= form_for(@hab_code) do |f| %>
+  <% if @hab_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hab_code.errors.count, "error") %> prohibited this hab_code from being saved:</h2>
+
+      <ul>
+      <% @hab_code.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class ="form-group" >
+    <%= f.label :name, 'Your Code' %>
+    <%= f.text_field :code, :class => 'form-control', :required => true %>
+  </div >
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :date_sent %><br>
+    <%= f.datetime_select :date_sent %>
+  </div>
+  <div class="field">
+    <%= f.label :registered %><br>
+    <%= f.check_box :registered %>
+  </div>
+  <div class="field">
+    <%= f.label :assigned %><br>
+    <%= f.check_box :assigned %>
+  </div>
+  <div class="field">
+    <%= f.label :completed %><br>
+    <%= f.datetime_select :completed %>
+  </div>
+  <div class="field">
+    <%= f.label :debriefed %><br>
+    <%= f.check_box :debriefed %>
+  </div>
+  <div class="field">
+    <%= f.label :report_sent %><br>
+    <%= f.check_box :report_sent %>
+  </div>
+  <div class="field">
+    <%= f.label :coach_id %><br>
+    <%= f.text_field :coach_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
